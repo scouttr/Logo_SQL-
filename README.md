@@ -1,2 +1,59 @@
-# Logo_SQL-
-Logo SQL Antrepo
+==>>> SELECT
+Malzeme Listesi Sorgu 
+
+==>> SELECT 
+
+Malzeme Sorgusu
+SELECT * FROM LG_001_ITEMS
+
+Malzeme Grup Kodu Sorgusu 
+SELECT * FROM LG_001_ITEMS WHERE STGRPCODE='GRUPKOD'
+
+Cari Hesap Kart Sorgu 
+SELECT * FROM LG_001_CLCARD
+
+Fatura No Sorgulama 
+SELECT * FROM LG_001_01_INVOICE WHERE FICHENO='00001'
+
+==>>>UPDATE
+
+Malzeme Özel Kod Güncelle 
+UPDATE LG_001_ITEMS SET SPECODE='YENİ VERİ' WHERE SPECODE ='ESKİ VERİ'
+
+Malzeme Grup Kodu Güncelle 
+UPDATE LG_001_ITEMS SET STGRPCODE='YENİ VERİ' WHERE STGRPCODE ='ESKİ VERİ'
+
+Kodu FİLT. ile başlayan malzemenin Grup Kodunu FİLTRE yazma komutu 
+UPDATE LG_001_ITEMS SET STGRPCODE='FİLTRE' WHERE CODE LIKE'FİLT.%'
+
+Açıklaması Debriyaj Seti ile başlayan açıklamaların Grup Kodunu DEB-SET yazma 
+UPDATE LG_001_ITEMS SET STGRPCODE='DEB-SET' WHERE NAME LIKE'DEBRİYAJ SET%'
+
+==>>>LIKE
+
+Kodu TM ile başlayan kodlar 
+SELECT * FROM LG_001_ITEMS WHERE CODE LIKE'TM%'
+
+Arasında TM olanlar 
+SELECT * FROM LG_001_ITEMS WHERE CODE LIKE'%TM%'
+
+Sonunda TM olan Kodlar 
+SELECT * FROM LG_001_ITEMS WHERE CODE LIKE'%TM'
+
+==>> BETWEEN
+select CODE FROM LG_001_ITEMS WHERE CODE BETWEEN '457%' AND '541%';
+
+==>> REPLACE
+Malzeme kodunu yeniden adlandır.
+UPDATE LG_001_ITEMS SET CODE = REPLACE( CODE, 'YALNIŞ', 'YANLIŞ')
+
+Malzeme adını yeniden adlandır.
+UPDATE LG_001_ITEMS SET NAME = REPLACE( NAME, 'YALNIŞ', 'YANLIŞ')
+
+===>>>DELETE
+Fiyat Listelerinde Cari Koda göre belirlenmiş bir fiyatı silme sorgusu 
+DELETE FROM LG_001_PRCLIST WHERE CLIENTCODE LIKE'120.99%'
+
+===>>> CONCAT
+900 İLE BAŞLAYAN KODLARIN BAŞINA A HARFİ EKLEME 
+UPDATE LG_001_ITEMS SET CODE= CONCAT('A', CODE) WHERE CODE LIKE '900%'
